@@ -1,0 +1,218 @@
+make -C xen install
+make[1]: entrant dans le répertoire « /ssd/kevin/xen-4.8.0/xen »
+make -f Rules.mk _install
+make[2]: entrant dans le répertoire « /ssd/kevin/xen-4.8.0/xen »
+make -C tools
+make[3]: entrant dans le répertoire « /ssd/kevin/xen-4.8.0/xen/tools »
+make symbols
+make[4]: entrant dans le répertoire « /ssd/kevin/xen-4.8.0/xen/tools »
+make[4]: « symbols » est à jour.
+make[4]: quittant le répertoire « /ssd/kevin/xen-4.8.0/xen/tools »
+make[3]: quittant le répertoire « /ssd/kevin/xen-4.8.0/xen/tools »
+make -f /ssd/kevin/xen-4.8.0/xen/Rules.mk include/xen/compile.h
+make[3]: entrant dans le répertoire « /ssd/kevin/xen-4.8.0/xen »
+ Xen 4.8.0
+make[3]: quittant le répertoire « /ssd/kevin/xen-4.8.0/xen »
+[ -e include/asm ] || ln -sf asm-x86 include/asm
+[ -e arch/x86/efi ] && for f in boot.c runtime.c compat.c efi.h;\
+		do ln -nsf ../../../common/efi/$f arch/x86/efi/; done;\
+		true
+make -f /ssd/kevin/xen-4.8.0/xen/Rules.mk -C include
+make[3]: entrant dans le répertoire « /ssd/kevin/xen-4.8.0/xen/include »
+python /ssd/kevin/xen-4.8.0/xen/tools/gen-cpuid.py -i /ssd/kevin/xen-4.8.0/xen/include/public/arch-x86/cpufeatureset.h /ssd/kevin/xen-4.8.0/xen/tools/gen-cpuid.py FORCE -o /ssd/kevin/xen-4.8.0/xen/include/asm-x86/cpuid-autogen.h.new
+if ! cmp -s /ssd/kevin/xen-4.8.0/xen/include/asm-x86/cpuid-autogen.h.new /ssd/kevin/xen-4.8.0/xen/include/asm-x86/cpuid-autogen.h; then mv -f /ssd/kevin/xen-4.8.0/xen/include/asm-x86/cpuid-autogen.h.new /ssd/kevin/xen-4.8.0/xen/include/asm-x86/cpuid-autogen.h; else rm -f /ssd/kevin/xen-4.8.0/xen/include/asm-x86/cpuid-autogen.h.new; fi
+make[3]: quittant le répertoire « /ssd/kevin/xen-4.8.0/xen/include »
+make -f /ssd/kevin/xen-4.8.0/xen/Rules.mk -C arch/x86 asm-offsets.s
+make[3]: entrant dans le répertoire « /ssd/kevin/xen-4.8.0/xen/arch/x86 »
+make[3]: « asm-offsets.s » est à jour.
+make[3]: quittant le répertoire « /ssd/kevin/xen-4.8.0/xen/arch/x86 »
+make -f /ssd/kevin/xen-4.8.0/xen/Rules.mk include/asm-x86/asm-offsets.h
+make[3]: entrant dans le répertoire « /ssd/kevin/xen-4.8.0/xen »
+make[3]: « include/asm-x86/asm-offsets.h » est à jour.
+make[3]: quittant le répertoire « /ssd/kevin/xen-4.8.0/xen »
+make -f /ssd/kevin/xen-4.8.0/xen/Rules.mk -C arch/x86 /ssd/kevin/xen-4.8.0/xen/xen
+make[3]: entrant dans le répertoire « /ssd/kevin/xen-4.8.0/xen/arch/x86 »
+make -f /ssd/kevin/xen-4.8.0/xen/Rules.mk -C /ssd/kevin/xen-4.8.0/xen/arch/x86/boot built_in.o
+make[4]: entrant dans le répertoire « /ssd/kevin/xen-4.8.0/xen/arch/x86/boot »
+make[4]: « built_in.o » est à jour.
+make[4]: quittant le répertoire « /ssd/kevin/xen-4.8.0/xen/arch/x86/boot »
+make -f /ssd/kevin/xen-4.8.0/xen/Rules.mk -C /ssd/kevin/xen-4.8.0/xen/arch/x86/efi built_in.o
+make[4]: entrant dans le répertoire « /ssd/kevin/xen-4.8.0/xen/arch/x86/efi »
+make[4]: « built_in.o » est à jour.
+make[4]: quittant le répertoire « /ssd/kevin/xen-4.8.0/xen/arch/x86/efi »
+make -f /ssd/kevin/xen-4.8.0/xen/Rules.mk -C /ssd/kevin/xen-4.8.0/xen/common built_in.o
+make[4]: entrant dans le répertoire « /ssd/kevin/xen-4.8.0/xen/common »
+gcc -m64 -DBUILD_ID -fno-strict-aliasing -std=gnu99 -Wall -Wstrict-prototypes -Wdeclaration-after-statement -Wno-unused-but-set-variable -Wno-unused-local-typedefs   -O2 -fomit-frame-pointer -nostdinc -fno-builtin -fno-common -Werror -Wredundant-decls -Wno-pointer-arith -pipe -g -D__XEN__ -include /ssd/kevin/xen-4.8.0/xen/include/xen/config.h '-D__OBJECT_FILE__="schedule.o"' -Wa,--strip-local-absolute -MMD -MF ./.schedule.o.d -I/ssd/kevin/xen-4.8.0/xen/include -I/ssd/kevin/xen-4.8.0/xen/include/asm-x86/mach-generic -I/ssd/kevin/xen-4.8.0/xen/include/asm-x86/mach-default '-D__OBJECT_LABEL__=common$schedule.o' -msoft-float -fno-stack-protector -fno-exceptions -Wnested-externs -DHAVE_GAS_VMX -DHAVE_GAS_SSE4_2 -DHAVE_GAS_EPT -DHAVE_GAS_FSGSBASE -mno-red-zone -mno-sse -fpic -fno-asynchronous-unwind-tables -DGCC_HAS_VISIBILITY_ATTRIBUTE -c schedule.c -o schedule.o
+In file included from /ssd/kevin/xen-4.8.0/xen/include/xen/sched.h:6:0,
+                 from schedule.c:20:
+schedule.c: In function ‘schedule’:
+schedule.c:2327:14: error: ‘curr_domain’ undeclared (first use in this function)
+   spin_lock(&curr_domain->page_alloc_lock);
+              ^
+/ssd/kevin/xen-4.8.0/xen/include/xen/spinlock.h:171:50: note: in definition of macro ‘spin_lock’
+ #define spin_lock(l)                  _spin_lock(l)
+                                                  ^
+schedule.c:2327:14: note: each undeclared identifier is reported only once for each function it appears in
+   spin_lock(&curr_domain->page_alloc_lock);
+              ^
+/ssd/kevin/xen-4.8.0/xen/include/xen/spinlock.h:171:50: note: in definition of macro ‘spin_lock’
+ #define spin_lock(l)                  _spin_lock(l)
+                                                  ^
+schedule.c:2336:10: error: ‘socket_t {aka struct hwc_gs}’ has no member named ‘nr_pages’
+    socket->nr_pages = page_num_node[socket->id];
+          ^
+schedule.c:2366:1: error: ISO C90 forbids mixed declarations and code [-Werror=declaration-after-statement]
+ void context_saved(struct vcpu *prev)
+ ^
+schedule.c:2383:13: error: invalid storage class for function ‘s_timer_fn’
+ static void s_timer_fn(void *unused)
+             ^
+schedule.c:2390:13: error: invalid storage class for function ‘vcpu_periodic_timer_fn’
+ static void vcpu_periodic_timer_fn(void *data)
+             ^
+schedule.c:2397:13: error: invalid storage class for function ‘vcpu_singleshot_timer_fn’
+ static void vcpu_singleshot_timer_fn(void *data)
+             ^
+schedule.c:2404:13: error: invalid storage class for function ‘poll_timer_fn’
+ static void poll_timer_fn(void *data)
+             ^
+schedule.c:2412:12: error: invalid storage class for function ‘cpu_schedule_up’
+ static int cpu_schedule_up(unsigned int cpu)
+            ^
+schedule.c:2468:13: error: invalid storage class for function ‘cpu_schedule_down’
+ static void cpu_schedule_down(unsigned int cpu)
+             ^
+schedule.c:2482:12: error: invalid storage class for function ‘cpu_schedule_callback’
+ static int cpu_schedule_callback(
+            ^
+schedule.c:2544:22: error: initializer element is not constant
+     .notifier_call = cpu_schedule_callback
+                      ^
+schedule.c:2544:22: note: (near initialization for ‘cpu_schedule_nfb.notifier_call’)
+In file included from /ssd/kevin/xen-4.8.0/xen/include/compat/xen.h:3:0,
+                 from /ssd/kevin/xen-4.8.0/xen/include/xen/shared.h:6,
+                 from /ssd/kevin/xen-4.8.0/xen/include/xen/sched.h:8,
+                 from schedule.c:20:
+/ssd/kevin/xen-4.8.0/xen/include/xen/compat.h:137:32: error: invalid storage class for function ‘__checkFstruct_sched_pin_override__pcpu’
+ #define CHECK_NAME_(k, n, tag) __check ## tag ## k ## _ ## n
+                                ^
+/ssd/kevin/xen-4.8.0/xen/include/xen/compat.h:169:34: note: in definition of macro ‘CHECK_FIELD_COMMON_’
+ static inline int __maybe_unused name(k xen_ ## n *x, k compat_ ## n *c) \
+                                  ^
+/ssd/kevin/xen-4.8.0/xen/include/xen/compat.h:179:28: note: in expansion of macro ‘CHECK_NAME_’
+     CHECK_FIELD_COMMON_(k, CHECK_NAME_(k, n ## __ ## f, F), n, f)
+                            ^
+/ssd/kevin/xen-4.8.0/xen/include/compat/xlat.h:982:5: note: in expansion of macro ‘CHECK_FIELD_’
+     CHECK_FIELD_(struct, sched_pin_override, pcpu)
+     ^
+compat/schedule.c:14:1: note: in expansion of macro ‘CHECK_sched_pin_override’
+ CHECK_sched_pin_override;
+ ^
+/ssd/kevin/xen-4.8.0/xen/include/xen/compat.h:158:5: error: ISO C90 forbids mixed declarations and code [-Werror=declaration-after-statement]
+     typedef int CHECK_NAME_(k, n, S)[1 - (sizeof(k xen_ ## n) != \
+     ^
+/ssd/kevin/xen-4.8.0/xen/include/compat/xlat.h:990:5: note: in expansion of macro ‘CHECK_SIZE_’
+     CHECK_SIZE_(struct, sched_shutdown); \
+     ^
+compat/schedule.c:18:1: note: in expansion of macro ‘CHECK_sched_shutdown’
+ CHECK_sched_shutdown;
+ ^
+/ssd/kevin/xen-4.8.0/xen/include/xen/compat.h:137:32: error: invalid storage class for function ‘__checkFstruct_sched_shutdown__reason’
+ #define CHECK_NAME_(k, n, tag) __check ## tag ## k ## _ ## n
+                                ^
+/ssd/kevin/xen-4.8.0/xen/include/xen/compat.h:169:34: note: in definition of macro ‘CHECK_FIELD_COMMON_’
+ static inline int __maybe_unused name(k xen_ ## n *x, k compat_ ## n *c) \
+                                  ^
+/ssd/kevin/xen-4.8.0/xen/include/xen/compat.h:179:28: note: in expansion of macro ‘CHECK_NAME_’
+     CHECK_FIELD_COMMON_(k, CHECK_NAME_(k, n ## __ ## f, F), n, f)
+                            ^
+/ssd/kevin/xen-4.8.0/xen/include/compat/xlat.h:991:5: note: in expansion of macro ‘CHECK_FIELD_’
+     CHECK_FIELD_(struct, sched_shutdown, reason)
+     ^
+compat/schedule.c:18:1: note: in expansion of macro ‘CHECK_sched_shutdown’
+ CHECK_sched_shutdown;
+ ^
+/ssd/kevin/xen-4.8.0/xen/include/xen/compat.h:158:5: error: ISO C90 forbids mixed declarations and code [-Werror=declaration-after-statement]
+     typedef int CHECK_NAME_(k, n, S)[1 - (sizeof(k xen_ ## n) != \
+     ^
+/ssd/kevin/xen-4.8.0/xen/include/compat/xlat.h:985:5: note: in expansion of macro ‘CHECK_SIZE_’
+     CHECK_SIZE_(struct, sched_remote_shutdown); \
+     ^
+compat/schedule.c:22:1: note: in expansion of macro ‘CHECK_sched_remote_shutdown’
+ CHECK_sched_remote_shutdown;
+ ^
+/ssd/kevin/xen-4.8.0/xen/include/xen/compat.h:137:32: error: invalid storage class for function ‘__checkFstruct_sched_remote_shutdown__domain_id’
+ #define CHECK_NAME_(k, n, tag) __check ## tag ## k ## _ ## n
+                                ^
+/ssd/kevin/xen-4.8.0/xen/include/xen/compat.h:169:34: note: in definition of macro ‘CHECK_FIELD_COMMON_’
+ static inline int __maybe_unused name(k xen_ ## n *x, k compat_ ## n *c) \
+                                  ^
+/ssd/kevin/xen-4.8.0/xen/include/xen/compat.h:179:28: note: in expansion of macro ‘CHECK_NAME_’
+     CHECK_FIELD_COMMON_(k, CHECK_NAME_(k, n ## __ ## f, F), n, f)
+                            ^
+/ssd/kevin/xen-4.8.0/xen/include/compat/xlat.h:986:5: note: in expansion of macro ‘CHECK_FIELD_’
+     CHECK_FIELD_(struct, sched_remote_shutdown, domain_id); \
+     ^
+compat/schedule.c:22:1: note: in expansion of macro ‘CHECK_sched_remote_shutdown’
+ CHECK_sched_remote_shutdown;
+ ^
+/ssd/kevin/xen-4.8.0/xen/include/xen/compat.h:137:32: error: invalid storage class for function ‘__checkFstruct_sched_remote_shutdown__reason’
+ #define CHECK_NAME_(k, n, tag) __check ## tag ## k ## _ ## n
+                                ^
+/ssd/kevin/xen-4.8.0/xen/include/xen/compat.h:169:34: note: in definition of macro ‘CHECK_FIELD_COMMON_’
+ static inline int __maybe_unused name(k xen_ ## n *x, k compat_ ## n *c) \
+                                  ^
+/ssd/kevin/xen-4.8.0/xen/include/xen/compat.h:179:28: note: in expansion of macro ‘CHECK_NAME_’
+     CHECK_FIELD_COMMON_(k, CHECK_NAME_(k, n ## __ ## f, F), n, f)
+                            ^
+/ssd/kevin/xen-4.8.0/xen/include/compat/xlat.h:987:5: note: in expansion of macro ‘CHECK_FIELD_’
+     CHECK_FIELD_(struct, sched_remote_shutdown, reason)
+     ^
+compat/schedule.c:22:1: note: in expansion of macro ‘CHECK_sched_remote_shutdown’
+ CHECK_sched_remote_shutdown;
+ ^
+/ssd/kevin/xen-4.8.0/xen/include/xen/compat.h:169:1: error: ISO C90 forbids mixed declarations and code [-Werror=declaration-after-statement]
+ static inline int __maybe_unused name(k xen_ ## n *x, k compat_ ## n *c) \
+ ^
+/ssd/kevin/xen-4.8.0/xen/include/xen/compat.h:179:5: note: in expansion of macro ‘CHECK_FIELD_COMMON_’
+     CHECK_FIELD_COMMON_(k, CHECK_NAME_(k, n ## __ ## f, F), n, f)
+     ^
+/ssd/kevin/xen-4.8.0/xen/include/compat/xlat.h:987:5: note: in expansion of macro ‘CHECK_FIELD_’
+     CHECK_FIELD_(struct, sched_remote_shutdown, reason)
+     ^
+compat/schedule.c:22:1: note: in expansion of macro ‘CHECK_sched_remote_shutdown’
+ CHECK_sched_remote_shutdown;
+ ^
+In file included from schedule.c:2792:0:
+compat/schedule.c:25:12: error: invalid storage class for function ‘compat_poll’
+ static int compat_poll(struct compat_sched_poll *compat)
+            ^
+compat/schedule.c:25:1: error: ISO C90 forbids mixed declarations and code [-Werror=declaration-after-statement]
+ static int compat_poll(struct compat_sched_poll *compat)
+ ^
+schedule.c:2793:0: error: expected declaration or statement at end of input
+ #endif
+ ^
+schedule.c: At top level:
+schedule.c:884:13: error: ‘vcpu_periodic_timer_fn’ used but never defined [-Werror]
+ static void vcpu_periodic_timer_fn(void *data);
+             ^
+schedule.c:885:13: error: ‘vcpu_singleshot_timer_fn’ used but never defined [-Werror]
+ static void vcpu_singleshot_timer_fn(void *data);
+             ^
+schedule.c:886:13: error: ‘poll_timer_fn’ used but never defined [-Werror]
+ static void poll_timer_fn(void *data);
+             ^
+schedule.c:883:13: error: ‘s_timer_fn’ declared ‘static’ but never defined [-Werror=unused-function]
+ static void s_timer_fn(void *unused);
+             ^
+cc1: all warnings being treated as errors
+make[4]: *** [schedule.o] Erreur 1
+make[4]: quittant le répertoire « /ssd/kevin/xen-4.8.0/xen/common »
+make[3]: *** [/ssd/kevin/xen-4.8.0/xen/common/built_in.o] Erreur 2
+make[3]: quittant le répertoire « /ssd/kevin/xen-4.8.0/xen/arch/x86 »
+make[2]: *** [/ssd/kevin/xen-4.8.0/xen/xen] Erreur 2
+make[2]: quittant le répertoire « /ssd/kevin/xen-4.8.0/xen »
+make[1]: *** [install] Erreur 2
+make[1]: quittant le répertoire « /ssd/kevin/xen-4.8.0/xen »
+make: *** [install-xen] Erreur 2

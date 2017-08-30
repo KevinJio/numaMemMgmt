@@ -1,0 +1,21 @@
+# Ignore dist and docs dirs
+#/dist
+#/docs
+
+# make and build files
+#*.lst
+#*.o
+#*.d
+#*.eep
+#*.lss
+#*.map
+#*.sym
+#*.so
+#*.obj
+"*.lib
+"*.out
+
+"*generated*
+"*.config.log
+
+"*.gz
